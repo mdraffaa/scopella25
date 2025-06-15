@@ -1,0 +1,661 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Tilt Warp', Arial, sans-serif;
+    background: url('../background/IMG_5908.PNG');
+    background-size: cover;
+    
+}
+
+.followingNav {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    height: 80px; 
+    width: 100%;
+    padding: 0 50px;
+    background: none;
+    filter: drop-shadow(5px 10px 10px rgb(0, 0, 0));
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;;
+    box-sizing: border-box;
+}
+
+.info-nav {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    right: -100%;
+    width: 100vw;
+    max-width: 400px;
+    height: 100%;
+    background-color: #f8f1e5;
+    color: navy;
+    transition: right 0.5s ease, opacity 1s ease;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 90px 20px 20px 20px;
+    z-index: 1000;
+    opacity: 0;
+    gap: 1rem;
+}
+
+nav img {
+    width: 100px;
+    cursor: pointer;
+}
+
+.containeratas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.info-nav.active {
+    right: 0;
+    opacity: 1;
+}
+
+.info-nav .close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0;
+    cursor: pointer;
+    filter: invert(1);
+    z-index: 1001;
+}
+
+.info-nav .info-button {
+    color: navy;
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 18px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, background 0.3s;
+}
+
+
+.info-nav .info-button::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f39c12, #e67e22);
+    transition: width 0.3s cubic-bezier(.4,2,.6,1);
+    border-radius: 2px;
+}
+
+.info-nav .info-button:hover {
+    color: #fff;
+    background: linear-gradient(90deg, #f39c12 60%, #e67e22 100%);
+    box-shadow: 0 4px 16px rgba(243, 156, 18, 0.15);
+    border-radius: 18px;         /* Lebih bulat saat hover */
+    padding-left: 28px;          /* Tambah padding kiri saat hover */
+    padding-right: 28px;         /* Tambah padding kanan saat hover */
+    transition: color 0.3s, background 0.3s, border-radius 0.3s, padding 0.3s;
+}
+
+.info-nav .info-button:hover::after {
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 100px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.nav-menu a {
+    color: navy;
+    text-decoration: none;
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.nav-menu a:hover {
+    text-decoration: underline;
+}
+
+.snk-section {
+    width: 65vw;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 18px;
+}
+
+.snk-judul, .snk-metode, .snk-perhatian {
+    background: #e9d8c3;
+    border: #8d6748 6px solid;
+    color: #4b2e19;
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+.snk-accordion {
+    margin-bottom: 16px;
+}
+
+.snk-accordion-btn {
+    position: relative;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    padding: 0.9em 2.2em 0.9em 1.2em; 
+    text-align: left;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.2s;
+    min-height: 2.5em;
+}
+
+.snk-arrow {
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    width: 0.9em;   
+    height: 0.9em;
+    pointer-events: none;
+    display: inline-block;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+    transform-origin: 50% 50%;
+}
+.snk-arrow::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: solid #fff;
+    border-width: 0 0.13em 0.13em 0;
+    padding: 0.09em;
+    transform: rotate(45deg);
+    margin-top: 0;
+}
+.snk-accordion-btn.active .snk-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.snk-accordion-btn.active .snk-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.snk-accordion-btn.active .snk-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.snk-accordion-btn.active,
+.snk-accordion-btn:hover {
+    background: rgba(0,0,0,0.85);
+}
+
+.snk-accordion-content {
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border-radius: 0 0 12px 12px; 
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s cubic-bezier(.4,2,.6,1);
+    padding: 0 18px;
+    margin-top: -4px; 
+}
+.snk-accordion-btn.active + .snk-accordion-content {
+    padding: 14px 18px;
+}
+
+.snk-unduh, .snk-daftar {
+    text-align: center;
+    margin: 18px 0;
+}
+.snk-unduh button {
+    background: #14046e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.snk-daftar-outer {
+    box-shadow: #000000 0 15px 30px;
+    margin-top: 20px;
+    background: #000000;           
+    border: 5px solid #eda320;    
+    border-radius: 22px;           
+    display: inline-block;
+    padding: 7px;                
+    box-sizing: border-box;
+}
+
+.snk-daftar-link {
+    display: inline-block;
+    color: #fff;
+    font-size: 1.2rem;
+    text-decoration: underline;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.5em 0;
+    transition: color 0.2s;
+}
+.snk-daftar-link:hover {
+    color: #000000;
+    text-decoration: underline;
+}
+
+.snk-daftar {
+    background: #eda320;
+    color: #000000;
+    padding: 1px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    margin: 0;
+    text-align: center;
+}
+
+.snk-unduh button:hover, .snk-daftar button:hover {
+    background: #444;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    body {
+        background: url('../background/PhoneRes/IMG_5931.PNG');
+    }
+
+    .snk-judul {
+        margin-top: 9vw;
+    }
+
+    .followingNav {
+        padding: 0 20px;;
+    }
+
+    .followingNav img {
+        width: 20vw;
+    }
+
+    .info-nav {
+        width: 55vw;
+        max-width: none;
+        padding: 60px 20px 20px 20px;
+    }
+
+    .info-nav .close {
+        top: 10px;
+        right: 10px;
+    }
+
+    .info-nav .info-button {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .snk-accordion-btn {
+        font-size: 1.2rem;
+    }
+
+    .snk-accordion {
+        width: 70vw;
+    }
+
+
+    
+
+}
+
+.footer {
+            background: url(../background/design-space-paper-textured-background.jpg) center/cover;
+            padding: 60px 0 40px;
+            color: white;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 5px;
+        }
+
+        .logo-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+.info-button1 {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease; /* Transisi smooth untuk semua properti */
+    padding: 8px 0;
+    border-left: 3px solid transparent; /* Border transparan sebagai starting point */
+    padding-left: 15px;
+    display: block; /* Atau inline-block tergantung layout */
+}
+
+.info-button1:hover {
+    color: #ffeb3b; /* Warna kuning saat hover */
+    border-left-color: #ffeb3b; /* Border kiri berubah kuning */
+    padding-left: 20px; /* Geser ke kanan 5px */
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.3); /* Glow effect */
+}
+
+/* Alternative Hover Effect - Bottom Border Style */
+.info-button1-alt {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+.info-button1-alt:hover {
+    color: #ffeb3b;
+    border-bottom-color: #ffeb3b;
+    transform: translateY(-2px); /* Naik sedikit */
+}
+
+/* Hover Effect dengan Background Slide */
+.info-button1-slide {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 12px 20px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    border-radius: 5px;
+}
+
+.info-button1-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 235, 59, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+.info-button1-slide:hover::before {
+    left: 100%; /* Slide dari kiri ke kanan */
+}
+
+.info-button1-slide:hover {
+    color: #ffeb3b;
+    background: rgba(255, 235, 59, 0.1);
+}
+
+/* Hover Effect dengan Scale dan Glow */
+.info-button1-scale {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.info-button1-scale:hover {
+    color: #ffeb3b;
+    transform: scale(1.05); /* Perbesar 5% */
+    background: rgba(255, 235, 59, 0.1);
+    box-shadow: 0 5px 15px rgba(255, 235, 59, 0.2);
+}
+
+/* Hover Effect dengan Underline Animation */
+.info-button1-underline {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.info-button1-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffeb3b;
+    transition: width 0.3s ease;
+}
+
+.info-button1-underline:hover {
+    color: #ffeb3b;
+}
+
+.info-button1-underline:hover::after {
+    width: 100%; /* Underline mengembang dari 0 ke 100% */
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .info-button1 {
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        padding-left: 0;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+
+    .info-button1:hover {
+        border-left: none;
+        border-bottom-color: #ffeb3b;
+        padding-left: 0;
+        transform: translateY(-2px);
+    }
+}
+
+/* Logo Hover Effect */
+.logo {
+    transition: transform 0.6s ease;
+}
+
+.footer-left:hover .logo {
+    transform: rotate(360deg);
+}
+
+
+.map-container {
+    transition: all 0.3s ease;
+}
+
+.map-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.map-iframe {
+    filter: brightness(0.9) contrast(1.1);
+    transition: filter 0.3s ease;
+}
+
+.map-container:hover .map-iframe {
+    filter: brightness(1) contrast(1.2);
+}
+
+        .contact-section {
+            margin-top: 40px;
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .school-info {
+            margin-bottom: 30px;
+        }
+
+        .school-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .map-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-map-iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .map-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: brightness(0.9) contrast(1.1);
+            transition: filter 0.3s ease;
+        }
+
+        .map-container:hover .map-iframe {
+            filter: brightness(1) contrast(1.2);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            margin-left: -2vw;
+            
+        }
+
+        .ASR {
+            width: 7vw;
+            
+        }
+
+        .IG {
+            width: 7vw;
+        }
+
+        .ASR, .IG {
+        filter: grayscale(1) brightness(1.2) contrast(1.1) ;
+        opacity: 0.5;
+        transition: filter 0.3s, opacity 0.3s;
+        cursor: pointer;
+        }
+
+        .ASR:hover, .IG:hover {
+        filter: none;
+        opacity: 1;
+        }
+
+@media (max-width: 768px) {
+    .ASR, .IG {
+    width: 15vw;
+    }
+
+
+}
